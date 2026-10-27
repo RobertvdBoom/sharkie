@@ -7,4 +7,12 @@ class Character extends MovableObject {
     jump() {
 
     }
+
+    moveRight() {
+        this.x += 10;
+    }
+
+    moveLeft() {
+        this.x -= 10;
+    }
 }

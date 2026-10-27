@@ -5,6 +5,9 @@ class World {
         new JellyFish(),
         new JellyFish(),
     ];
+    lights = [
+        new Light(),
+    ];
     canvas;
     ctx;
 
@@ -16,16 +19,21 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
         this.enemies.forEach(enemy => {
             this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
-            enemy.x --;
+            // enemy.x--;
         });
 
-        // let self = this;
-        // requestAnimationFrame(function() {
-        //     self.draw();
-        // });
+        this.lights.forEach(light => {
+            this.ctx.drawImage(light.img, light.x, light.y, light.width, light.height);
+            // light.x--;
+        });
+        this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
+
+        let self = this;
+        requestAnimationFrame(function () {
+            self.draw();
+        });
 
 
     }
