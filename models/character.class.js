@@ -1,18 +1,30 @@
 class Character extends MovableObject {
-    
+
     constructor() {
         super().loadImage("assets/imgs/1.Sharkie/1.IDLE/1.png");
     }
 
-    jump() {
+    swimUp() {
+        if (this.y >= -100) {
+            this.y -= 10;
+        }
+    }
 
+    swimDown() {
+        if (this.y <= 280) {
+            this.y += 10;
+        }
     }
 
     moveRight() {
-        this.x += 10;
+        if (this.x <= 550) {
+            this.x += 10;
+        }
     }
 
     moveLeft() {
-        this.x -= 10;
+        if (this.x >= -30) {
+            this.x -= 10;
+        }
     }
 }

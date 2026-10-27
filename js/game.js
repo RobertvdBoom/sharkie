@@ -17,5 +17,9 @@ function handleInput(event) {
         world.character.moveLeft();
     } else if (event.key === "ArrowRight") {
         world.character.moveRight();
+    } else if (event.key === "ArrowUp") {
+        world.character.swimUp();
+    } else if (event.key === "ArrowDown") {
+        world.character.swimDown();
     }
 }
