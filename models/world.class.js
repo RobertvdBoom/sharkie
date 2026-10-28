@@ -8,6 +8,11 @@ class World {
     lights = [
         new Light(),
     ];
+
+    backgroundObjects = [
+        new BackgroundObject("assets/imgs/3. Background/Dark/1.png")
+    ]
+
     canvas;
     ctx;
 
@@ -20,15 +25,19 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.enemies.forEach(enemy => {
-            this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
+            this.addToMap(enemy)
+            // this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
             // enemy.x--;
         });
 
         this.lights.forEach(light => {
-            this.ctx.drawImage(light.img, light.x, light.y, light.width, light.height);
+            this.addToMap(light)
+            // this.ctx.drawImage(light.img, light.x, light.y, light.width, light.height);
             // light.x--;
         });
-        this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
+
+        this.addToMap(this.character);
+        // this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
 
         let self = this;
         requestAnimationFrame(function () {
@@ -37,4 +46,9 @@ class World {
 
 
     }
+
+    addToMap(movableObject) {
+        this.ctx.drawImage(movableObject.img, movableObject.x, movableObject.y, movableObject.width, movableObject.height);
+    }
+
 }
