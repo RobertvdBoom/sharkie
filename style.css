@@ -2,8 +2,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #115eab;
+    color: rgb(201, 201, 201);
+    font-size: 2em;
 }
 
 canvas {
     background-color: black;
+    border-radius: 8px;
 }
