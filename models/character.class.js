@@ -1,5 +1,8 @@
 class Character extends MovableObject {
 
+    height = 276;
+    width = 225;
+
     constructor() {
         super().loadImage("assets/imgs/1.Sharkie/1.IDLE/1.png");
     }
