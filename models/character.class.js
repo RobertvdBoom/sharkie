@@ -53,13 +53,13 @@ class Character extends MovableObject {
         }
     }
 
-    moveRight() {
+    swimRight() {
         if (this.x <= 550) {
             this.x += 10;
         }
     }
 
-    moveLeft() {
+    swimLeft() {
         if (this.x >= -30) {
             this.x -= 10;
         }
