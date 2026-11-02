@@ -35,4 +35,11 @@ class MovableObject {
             // }
         }, 1000 / 60)
     }
+
+    playAnimation(imageList) {
+        let i = this.currentImage % imageList.length;
+        let path = imageList[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
 }
