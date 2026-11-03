@@ -3,6 +3,8 @@ class Character extends MovableObject {
     height = 276;
     width = 225;
     speed = 6;
+    y = 100;
+
 
     IMAGES_IDLE = [
         "assets/imgs/1.Sharkie/1.IDLE/1.png",
@@ -41,6 +43,8 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_MOVING);
 
+        this.applyGravity();
+
         this.animate();
     }
 
@@ -48,13 +52,17 @@ class Character extends MovableObject {
 
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.x += this.speed;
-                this.otherDirection = false;
+                this.moveRight();
             }
             if (this.world.keyboard.LEFT && this.x > 0) {
-                this.x -= this.speed;
                 this.otherDirection = true;
+                this.moveLeft();
             }
+
+            if(this.world.keyboard.SPACE && !this.isAboveGround()) {
+                this.jump();
+            }
+
             this.world.camera_x = -this.x + 60;
         }, 1000 / 60);
 

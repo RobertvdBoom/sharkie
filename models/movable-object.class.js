@@ -8,7 +8,23 @@ class MovableObject {
     speed = 0.15;
     imageCache = {};
     otherDirection = false;
+    speedY = 0;
+    acceleration = 1.3;
 
+
+    applyGravity() { // use for throwing pots?
+        setInterval(() => {
+            if (this.isAboveGround() || this.speedY > 0) {
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration;
+            }
+
+        }, 1000 / 30)
+    }
+
+    isAboveGround() {
+        return this.y < 170;
+    }
 
     loadImage(path) {
         this.img = new Image();
@@ -24,16 +40,12 @@ class MovableObject {
     }
 
     moveRight() {
-        console.log("Moving Right");
+        this.x += this.speed;
+        this.otherDirection = false;
     }
 
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-            // if (this.x === -500) {
-            //     this.x = 720;
-            // }
-        }, 1000 / 60)
+        this.x -= this.speed;
     }
 
     playAnimation(imageList) {
@@ -41,5 +53,9 @@ class MovableObject {
         let path = imageList[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+    }
+
+    jump() {
+        this.speedY = 15;
     }
 }
