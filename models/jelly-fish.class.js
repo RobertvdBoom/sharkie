@@ -1,6 +1,7 @@
 class JellyFish extends MovableObject {
     height = 80;
     width = 65;
+    x = 500;
     y = 320;
     invertMovement = false;
 
@@ -38,7 +39,7 @@ class JellyFish extends MovableObject {
     }
 
     jellyFishRandomMovement() {
-        if (Math.floor(Math.random() * 200) + 1 === 50) {
+        if (Math.floor(Math.random() * 300) + 1 === 25) {
             this.invertMovement = !this.invertMovement;
         }
         if (this.y === 50) {
