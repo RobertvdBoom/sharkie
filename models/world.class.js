@@ -71,9 +71,9 @@ class World {
     }
 
     isColliding(movableObject) {
-        return  this.x + this.width > movableObject.x &&
-                this.y + this.height > movableObject.y &&
-                this.x < movableObject.x &&
-                this.y < movableObject.y + movableObject.height
+        return  this.x + this.width - this.offset.right > movableObject.x + movableObject.offset.left && // Checks this right side with movable object left side
+                this.y + this.height - this.offset.bottom > movableObject.y + movableObject.offset.top && // Checks this 
+                this.x + this.offset.left < movableObject.x + movableObject.width - movableObject.offset.right && // Checks 
+                this.y + this.offset.top < movableObject.y + movableObject.height - movableObject.offset.bottom; // Checks 
     }
 }

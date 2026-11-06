@@ -11,6 +11,13 @@ class MovableObject {
     speedY = 0;
     acceleration = 1.3;
 
+    offset = {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+    };
+
 
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
