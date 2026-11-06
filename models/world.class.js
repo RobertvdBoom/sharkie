@@ -70,4 +70,10 @@ class World {
         this.ctx.restore();
     }
 
+    isColliding(movableObject) {
+        return  this.x + this.width > movableObject.x &&
+                this.y + this.height > movableObject.y &&
+                this.x < movableObject.x &&
+                this.y < movableObject.y + movableObject.height
+    }
 }
