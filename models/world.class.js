@@ -25,12 +25,15 @@ class World {
     checkCollisions() {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
-                console.log(typeof this.character.isColliding);
+                // console.log(typeof this.character.isColliding);
                 if ( this.character.isColliding(enemy) ) {
                     console.log("Collision with Character", enemy)
+                    this.character.energy -= 3;
+                    console.log(this.character.energy);
+                    
                 };
             });
-        }, 200);
+        }, 1000);
     }
 
     draw() {
@@ -66,6 +69,7 @@ class World {
 
         movableObject.draw(this.ctx);
         movableObject.drawFrame(this.ctx);
+        movableObject.drawHitbox(this.ctx);
 
         if (movableObject.otherDirection) {
             this.flipImageBack(movableObject);

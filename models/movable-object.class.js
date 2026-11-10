@@ -10,6 +10,7 @@ class MovableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 1.3;
+    energy = 100;
 
     offset = {
         top: 0,
@@ -85,4 +86,19 @@ class MovableObject {
             this.x + this.offset.left < movableObject.x + movableObject.width - movableObject.offset.right && // Checks 
             this.y + this.offset.top < movableObject.y + movableObject.height - movableObject.offset.bottom; // Checks 
     }
+
+    drawHitbox(ctx) {
+        if (this instanceof Character) {
+            ctx.beginPath();
+            ctx.lineWidth = "5";
+            ctx.strokeStyle = 'red';
+            ctx.rect(
+                this.x + this.offset.left, 
+                this.y + this.offset.top, 
+                this.width - this.offset.right, 
+                this.height - this.offset.bottom);
+            ctx.stroke();
+        }
+    }
+
 }
