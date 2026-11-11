@@ -34,6 +34,17 @@ class MovableObject {
         }
     }
 
+    receiveDMG() {
+        this.energy -= 5;
+        if (this.energy < 0) {
+            this.energy = 0;
+        }
+    }
+
+    isDead() {
+        return this.energy == 0;
+    }
+
     applyGravity() { // use for throwing pots?
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -93,9 +104,9 @@ class MovableObject {
             ctx.lineWidth = "5";
             ctx.strokeStyle = 'red';
             ctx.rect(
-                this.x + this.offset.left, 
-                this.y + this.offset.top, 
-                this.width - this.offset.right, 
+                this.x + this.offset.left,
+                this.y + this.offset.top,
+                this.width - this.offset.right,
                 this.height - this.offset.bottom);
             ctx.stroke();
         }

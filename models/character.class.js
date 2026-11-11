@@ -43,12 +43,28 @@ class Character extends MovableObject {
         "assets/imgs/1.Sharkie/3.Swim/6.png",
     ]
 
+    IMAGES_DEAD = [
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00000.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00001.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00002.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00003.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00004.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00005.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00006.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00007.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00008.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00009.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00010.png",
+        "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00011.png",
+    ]
+
     world;
 
     constructor() {
         super().loadImage("assets/imgs/1.Sharkie/1.IDLE/1.png");
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_MOVING);
+        this.loadImages(this.IMAGES_DEAD);
 
         this.applyGravity();
 
@@ -70,16 +86,18 @@ class Character extends MovableObject {
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
             }
-
             this.world.camera_x = -this.x + 60;
         }, 1000 / 60);
 
         setInterval(() => {
-            if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) {
+            if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && !this.world.keyboard.UP && !this.world.keyboard.DOWN && this.isDead) {
                 let i = this.currentImage % this.IMAGES_IDLE.length;
                 let path = this.IMAGES_IDLE[i];
                 this.img = this.imageCache[path];
                 this.currentImage++;
+            }
+            if (this.isDead) {              
+                this.playAnimation(this.IMAGES_DEAD);
             }
         }, 1000 / 8);
 
