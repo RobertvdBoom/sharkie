@@ -34,6 +34,24 @@ class Character extends MovableObject {
         "assets/imgs/1.Sharkie/1.IDLE/18.png",
     ];
 
+    IMAGES_LONG_IDLE = [
+        "assets/imgs/1.Sharkie/2.Long_IDLE/i1.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/i1.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I2.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I3.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I4.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I5.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I6.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I7.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I8.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I9.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I10.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I11.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I12.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I13.png",
+        "assets/imgs/1.Sharkie/2.Long_IDLE/I14.png",
+    ];
+
     IMAGES_MOVING = [
         "assets/imgs/1.Sharkie/3.Swim/1.png",
         "assets/imgs/1.Sharkie/3.Swim/2.png",
@@ -58,6 +76,18 @@ class Character extends MovableObject {
         "assets/imgs/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00011.png",
     ]
 
+    IMAGES_POISONED = [
+        "assets/imgs/1.Sharkie/5.Hurt/1.Poisoned/1.png",
+        "assets/imgs/1.Sharkie/5.Hurt/1.Poisoned/2.png",
+        "assets/imgs/1.Sharkie/5.Hurt/1.Poisoned/3.png",
+        "assets/imgs/1.Sharkie/5.Hurt/1.Poisoned/4.png",
+    ]
+
+    IMAGES_ELECTRIFIED = [
+        "assets/imgs/1.Sharkie/5.Hurt/2.Electric shock/.o1.png",
+        "assets/imgs/1.Sharkie/5.Hurt/2.Electric shock/.o2.png",
+    ]
+
     world;
 
     constructor() {
@@ -72,7 +102,6 @@ class Character extends MovableObject {
     }
 
     animate() {
-
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.otherDirection = false;
@@ -90,19 +119,18 @@ class Character extends MovableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && !this.world.keyboard.UP && !this.world.keyboard.DOWN && this.isDead) {
+            if (this.isDead()) {
+                this.playAnimation(this.IMAGES_DEAD);
+            } else if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && !this.world.keyboard.UP && !this.world.keyboard.DOWN && this.isDead) {
                 let i = this.currentImage % this.IMAGES_IDLE.length;
                 let path = this.IMAGES_IDLE[i];
                 this.img = this.imageCache[path];
                 this.currentImage++;
             }
-            if (this.isDead) {              
-                this.playAnimation(this.IMAGES_DEAD);
-            }
         }, 1000 / 8);
 
         setInterval(() => {
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT && !isDead()) {
                 this.playAnimation(this.IMAGES_MOVING);
             }
 
