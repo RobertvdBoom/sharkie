@@ -27,8 +27,6 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
                     this.character.receiveDMG();
-                    console.log(this.character.energy);
-
                 };
             });
         }, 100);

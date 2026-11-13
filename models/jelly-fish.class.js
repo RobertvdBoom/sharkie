@@ -4,6 +4,12 @@ class JellyFish extends MovableObject {
     x = 500;
     y = 320;
     invertMovement = false;
+    offset = {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+    };
 
     currentImage = 0;
     IMAGES_IDLE = [

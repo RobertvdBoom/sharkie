@@ -95,6 +95,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_MOVING);
         this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_POISONED);
 
         this.applyGravity();
 
@@ -130,14 +131,17 @@ class Character extends MovableObject {
         }, 1000 / 8);
 
         setInterval(() => {
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT && !isDead()) {
+            if (this.isDead()) {
+                this.playAnimation(this.IMAGES_DEAD);
+            } else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_POISONED);
+            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 this.playAnimation(this.IMAGES_MOVING);
             }
-
         }, 1000 / 8);
 
     }
-
+ 
     swimUp() {
         if (this.y >= -100) {
             this.y -= 10;

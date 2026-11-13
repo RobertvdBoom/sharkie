@@ -12,6 +12,8 @@ class MovableObject {
     acceleration = 1.3;
     energy = 100;
 
+    lastHit = 0;
+
     offset = {
         top: 0,
         bottom: 0,
@@ -38,11 +40,19 @@ class MovableObject {
         this.energy -= 5;
         if (this.energy < 0) {
             this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
         }
     }
 
     isDead() {
         return this.energy == 0;
+    }
+
+    isHurt() {
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed / 1000;
+        return timepassed < 0.8;
     }
 
     applyGravity() { // use for throwing pots?
