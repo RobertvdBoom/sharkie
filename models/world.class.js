@@ -6,10 +6,16 @@ class World {
     keyboard;
     camera_x = 0;
 
-    statusBar = new StatusBar();
-    statusBar = new StatusBar("health");
-    coinBar = new StatusBar("coin");
-    poisonBar = new StatusBar("poison");
+    statusBars = [
+        new StatusBar("health"),
+        new StatusBar("coin"),
+        new StatusBar("poison"),
+    ]
+
+    throwableObjects = [
+        new ThrowableObject(),
+    ];
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext("2d");
@@ -31,6 +37,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
                     this.character.receiveDMG();
+                    this.statusBars[0].setPercentage(this.character.energy);
                 };
             });
         }, 100);
@@ -44,9 +51,16 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.lights);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.throwableObjects);
+
+        this.ctx.translate(-this.camera_x, 0);
+        // SPACE FOR FIXED OBJECTS-----------------
+        this.addObjectsToMap(this.statusBars);
+
+        this.ctx.translate(this.camera_x, 0);
+
 
         this.addToMap(this.character);
-        this.addToMap(this.statusBar);
 
         this.ctx.translate(-this.camera_x, 0);
 

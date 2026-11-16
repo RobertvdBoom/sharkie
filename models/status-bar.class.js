@@ -26,45 +26,46 @@ class StatusBar extends DrawableObject {
         "assets/imgs/4. Marcadores/orange/100_poison.png",
     ];
 
-    x = 20;
-    y = 20;
+    x = 10;
+    y = 0;
     width = 200;
     height = 53;
-    path;
-
+    
     statusBarTypes = {
         health: {
             images: this.IMAGES_HEALTH,
             startingValue: 100,
-            positionY: 20,
+            positionY: 0,
         },
         coin: {
             images: this.IMAGES_COINS,
             startingValue: 0,
-            positionY: 70,
+            positionY: 43,
         },
         poison: {
             images: this.IMAGES_POISON,
             startingValue: 0,
-            positionY: 120,
+            positionY: 87,
         },
     };
+    statusBarRef;
+
 
     percentage = 100;
 
     constructor(barType) {
         super();
-        statusBarRef = this.statusBarTypes[barType];
-        this.loadImages(statusBarRef.images);
-        this.y = statusBarRef.positionY;
-        this.setPercentage(statusBarRef.startingValue, statusBarRef.images,);
+        this.statusBarRef = this.statusBarTypes[barType];
+        this.loadImages(this.statusBarRef.images);
+        this.y = this.statusBarRef.positionY;      
+        this.setPercentage(this.statusBarRef.startingValue);
 
     }
 
     setPercentage(percentage) {
         this.percentage = percentage;
         
-        this.path = this.statusBarRef.images[this.resolveImageIndex()];
+        const path = this.statusBarRef.images[this.resolveImageIndex()];
 
         this.img = this.imageCache[path];
     }
