@@ -20,6 +20,10 @@ document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowDown") {
         keyboard.DOWN = true;
     }
+    
+    if (event.key === "D") {
+        keyboard.DOWN = false;
+    }
 
     if (event.key === " ") {
         keyboard.SPACE = true;
@@ -40,8 +44,12 @@ document.addEventListener("keyup", (event) => {
         keyboard.DOWN = false;
     }
 
+    if (event.key === "D") {
+        keyboard.DOWN = false;
+    }
+
     if (event.key === " ") {
-        keyboard.SPACE = false;        
+        keyboard.SPACE = false;
     }
 })
 
