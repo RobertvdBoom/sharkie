@@ -21,8 +21,8 @@ document.addEventListener("keydown", (event) => {
         keyboard.DOWN = true;
     }
     
-    if (event.key === "D") {
-        keyboard.DOWN = false;
+    if (event.key === "d") {
+        keyboard.D = true;
     }
 
     if (event.key === " ") {
@@ -44,8 +44,8 @@ document.addEventListener("keyup", (event) => {
         keyboard.DOWN = false;
     }
 
-    if (event.key === "D") {
-        keyboard.DOWN = false;
+    if (event.key === "d") {
+        keyboard.D = false;
     }
 
     if (event.key === " ") {

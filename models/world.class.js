@@ -12,9 +12,7 @@ class World {
         new StatusBar("poison"),
     ]
 
-    throwableObjects = [
-        new ThrowableObject(),
-    ];
+    throwableObjects = [];
 
 
     constructor(canvas, keyboard) {
@@ -23,24 +21,34 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
     }
-
-
 
     setWorld() {
         this.character.world = this;
     }
 
-    checkCollisions() {
+    run() {
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.receiveDMG();
-                    this.statusBars[0].setPercentage(this.character.energy);
-                };
-            });
+            this.checkCollisions();
+            this.checkThrowableObject();
         }, 100);
+    }
+
+    checkThrowableObject() {
+        if(this.keyboard.D) {
+            let bottle = new ThrowableObject(this.character.x, this.character.y);
+            this.throwableObjects.push(bottle);
+        }
+    }
+
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy)) {
+                this.character.receiveDMG();
+                this.statusBars[0].setPercentage(this.character.energy);
+            };
+        });
     }
 
     draw() {

@@ -1,7 +1,0 @@
-class GameBar {
-
-    constructor(imagePath) {
-
-        
-    }
-}
