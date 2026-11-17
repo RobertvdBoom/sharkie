@@ -3,11 +3,17 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #115eab;
-    color: rgb(201, 201, 201);
+    color: rgb(255, 255, 255);
     font-size: 2em;
+    font-family: "Luckiest Guy", Arial, sans-serif;
 }
 
 canvas {
     background-color: black;
     border-radius: 8px;
+}
+
+@font-face {
+    font-family: "Luckiest Guy";
+    src: url("assets/imgs/5.Font/LuckiestGuy-Regular.ttf");
 }
