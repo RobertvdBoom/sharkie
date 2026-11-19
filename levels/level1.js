@@ -3,6 +3,10 @@ const level1 = new Level(
         new JellyFish(),
         new JellyFish(),
         new JellyFish(),
+        new PufferFish(),
+        new PufferFish(),
+        new PufferFish(),
+        new PufferFish(),
         new Endboss(),
     ],
     [
