@@ -60,6 +60,7 @@ class World {
         this.addObjectsToMap(this.level.lights);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
+        this.addObjectsToMap(this.level.collectibles);
 
         this.ctx.translate(-this.camera_x, 0);
         // SPACE FOR FIXED OBJECTS-----------------

@@ -1,8 +1,11 @@
-class Collectibles {
+class Collectibles extends MovableObject {
 
-
-    constructor() {
-
+    width = 50;
+    height = 50;
+    constructor(imagePath, x) {
+        super();
+        this.loadImage(imagePath);
+        this.x = x;
     }
 
     IMAGES_COINS = [
@@ -20,5 +23,9 @@ class Collectibles {
         "assets/imgs/4. Marcadores/Posión/Animada/6.png",
         "assets/imgs/4. Marcadores/Posión/Animada/7.png",
         "assets/imgs/4. Marcadores/Posión/Animada/8.png",
+    ]
+
+    COIN_MAP = [
+
     ]
 }

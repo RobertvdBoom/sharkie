@@ -43,4 +43,8 @@ const level1 = new Level(
         new BackgroundObject("assets/imgs/3. Background/Layers/2. Floor/D1.png", 1440),
         new BackgroundObject("assets/imgs/3. Background/Layers/2. Floor/D2.png", 2160),
     ],
+    [
+        new Collectibles("assets/imgs/4. Marcadores/1. Coins/3.png", 50),
+        new Collectibles("assets/imgs/4. Marcadores/1. Coins/3.png", 80),
+    ],
 );
