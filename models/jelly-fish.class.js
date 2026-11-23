@@ -19,6 +19,56 @@ class JellyFish extends MovableObject {
         "assets/imgs/2.Enemy/2 Jelly fish/Regular damage/Yellow 4.png"
     ];
 
+    IMAGES_DEAD_YELLOW = [
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Yellow/y3.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png",
+    ];
+
+    IMAGES_IDLE_LILA = [
+        "assets/imgs/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Regular damage/Lila 3.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Regular damage/Lila 4.png",
+    ];
+
+    IMAGES_DEAD_LILA = [
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Lila/L1.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Lila/L2.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Lila/L3.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Lila/L4.png",
+
+    ];
+
+    IMAGES_IDLE_GREEN = [
+        "assets/imgs/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Súper dangerous/Green 3.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Súper dangerous/Green 4.png",
+    ];
+
+    IMAGES_DEAD_GREEN = [
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/green/g1.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/green/g2.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/green/g3.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/green/g4.png",
+    ];
+
+    IMAGES_IDLE_PINK = [
+        "assets/imgs/2.Enemy/2 Jelly fish/Súper dangerous/Pink 1.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Súper dangerous/Pink 2.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Súper dangerous/Pink 3.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Súper dangerous/Pink 4.png",
+    ];
+
+    IMAGES_DEAD_PINK = [
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Pink/P1.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Pink/P2.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Pink/P3.png",
+        "assets/imgs/2.Enemy/2 Jelly fish/Dead/Pink/P4.png",
+    ];
+
     constructor() {
         super().loadImage("assets/imgs/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png");
         this.x = 200 + Math.random() * 600;
